@@ -1,0 +1,26 @@
+Pure PHP Subversion Client
+==========================
+
+By Phillip Pearson <pp@myelin.co.nz>
+Copyright (C) 2006 Broadband Mechanics, Inc.
+
+LICENSE: MIT (see source files for details).
+
+This is a PHP package that implements part of the functionality of the
+'svn' Subversion client (namely 'checkout' and 'update', without
+merging).  It was written back in 2006 as part of the self-upgrade
+process for PeopleAggregator[1].
+
+StandaloneClient.php is pretty solid and has had very few issues since
+originally being written.  Unfortunately I haven't had time to
+properly extricate all this from PeopleAggregator, so you'll have to
+do that yourself.
+
+The biggest difference between this and the 'svn' client is that this
+doesn't keep a pristine copy of anything, just a hash of each file.
+If it detects that a file about to be patched has a different hash to
+the stored value, it will either replace the file by downloading a
+fresh copy of it, or simply leave the file as-is.  This isn't too bad
+if you are just updating code, but take care with local modifications.
+
+1. http://peopleaggregator.net/
